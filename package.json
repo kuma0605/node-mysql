@@ -1,0 +1,22 @@
+{
+  "name": "node-mysql",
+  "version": "1.0.0",
+  "description": "mysql of node env",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuma0605/node-mysql.git"
+  },
+  "author": "dylan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuma0605/node-mysql/issues"
+  },
+  "homepage": "https://github.com/kuma0605/node-mysql#readme",
+  "dependencies":{
+    "mysql":"^2.12.0"
+  }
+}
