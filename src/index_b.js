@@ -6,9 +6,11 @@ var mysql = require("mysql"),
     querystring = require('querystring');
 
 
-    //Start a web server on port 8888. Requests go to function handleRequest
+//Start a web server on port 8888. Requests go to function handleRequest
     
 http.createServer(handleRequest).listen(8888);
+
+//Function that handles http requests
 
 function handleRequest(request, response){
     //Page HTML as one big string, with placeholder "DBCONTENT" for data from 
@@ -81,6 +83,6 @@ function getContentsFromDatabase(filter, callback){
     var resultAsString = '';
 
     if(filter){
-        
+        query = connection.query('SELECT id, content FROM ')
     }
 }
