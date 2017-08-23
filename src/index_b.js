@@ -10,9 +10,11 @@ var mysql = require("mysql"),
     
 http.createServer(handleRequest).listen(8888);
 
+
 //Function that handles http requests
 
 function handleRequest(request, response){
+
     //Page HTML as one big string, with placeholder "DBCONTENT" for data from 
     //the database
     var pageContent = `<html>
@@ -37,6 +39,7 @@ function handleRequest(request, response){
                         </form>
                         </body>
                         </html>`;
+
     //Parsing the requested URL path in order to distinguish between 
     //the / page and the /add route
     var pathname = url.parse(request.url).pathname;
@@ -73,6 +76,7 @@ function handleRequest(request, response){
     }
 }
 
+
 //Function that is called by the code that handles the / route and 
 //retrieves contents from the database, applying a LIKE filter if one
 //was supplied
@@ -89,7 +93,7 @@ function getContentsFromDatabase(filter, callback){
     var resultAsString = '';
 
     if(filter){
-        query = connection.query('SELECT id, content FROM test' +
+        query = connection.query('SELECT id, content FROM test ' +
                                  'WHERE content LIKE "'+ filter +'%"');
     }else{
         query = connection.query('SELECT id, content FROM test');
@@ -108,11 +112,14 @@ function getContentsFromDatabase(filter, callback){
         resultAsString+='\n';
     });
 
+    //when we have worked through all results, we call the callback
+    //with our completed string
     query.on('end',function(result){
         connection.end();
         callback(resultAsString);
     });
 }
+
 
 //Function that is called by the code that handles the /add route
 //and inserts the supplied string as a new content entry
